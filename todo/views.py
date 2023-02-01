@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login
@@ -14,10 +14,12 @@ def singup_user(request):
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
+                return redirect('current_todos')
             except IntegrityError:
                 return render(request, 'singup_user.html', {'form': UserCreationForm(), 'error': 'Имя пользователя занято'})
         else:
             return render(request, 'singup_user.html', {'form': UserCreationForm(), 'error': 'Пароли не совпадают'} )
 
-
+def current_todos(request):
+    return render(request, 'current_todos.html')
 # Create your views here.
