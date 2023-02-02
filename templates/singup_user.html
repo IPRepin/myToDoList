@@ -5,6 +5,9 @@
     <title>Ренистрация пользователя</title>
 </head>
 <body>
+{% extends 'base.html' %}
+{% block content %}
+
 <h1>Регистрация</h1>
 <h2>{{ error }}</h2>
 
@@ -13,6 +16,6 @@
     {{ form.as_p }}
     <button type="submit">Зарегестрироватся</button>
 </form>
-
+{% endblock %}
 </body>
 </html>
