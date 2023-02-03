@@ -13,8 +13,8 @@
     </form>
 
 {% else %}
-    <a href="#">Зарегестрироватся</a>
-    <a href="#">Войти</a>
+    <a href="{% url 'singup_user' %}">Зарегестрироватся</a>
+    <a href="{% url 'login_user' %}">Войти</a>
 
 {% endif %}
 
